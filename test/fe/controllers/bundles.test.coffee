@@ -1,5 +1,7 @@
 should  = require 'should'
 request = require 'request'
+bundle  = require 'stratus-bundle'
+bundle.testDir()
 {host}  = require '../../app'
 
 describe "/bundles", ->
