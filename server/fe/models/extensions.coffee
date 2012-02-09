@@ -76,7 +76,7 @@ class PluginRepo
   # Returns nothing.
   install: (pluginPath, callback) ->
     lastPart = _.last pluginPath.split("/")
-    exec "cp '#{pluginPath}' '#{@path}/#{lastPart}'",
+    exec "cp -r '#{pluginPath}' '#{@path}/#{lastPart}'",
     (err, stdout, stderr) ->
       return callback err
   
