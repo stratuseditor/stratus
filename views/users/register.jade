@@ -1,0 +1,35 @@
+.register.bubble.bubble-center
+  header
+    h1 Register
+  
+  .tabs.tabs-block
+    nav.strategies: ul
+      li.current Email
+      //li GitHub
+    
+    .tab-contents
+      section.current
+        form(action="register", method="POST")
+          .field: input(name="login",    type="text",     placeholder="Username")
+          .field: input(name="password", type="password", placeholder="Password")
+          .field
+            input(name="password_conf", type="password", placeholder="Confirm password")
+            - if (typeof(errors) != "undefined")
+              != errorMessages(errors)
+          
+          input.primary(type="submit", value="Create account")
+          a.button(href="/login") Log In
+      
+      //section.github
+      //  a(href="#"): img.octocat(src="/images/octocat.png")
+      //  br
+      //  h3 Click on 
+      //    b Octocat 
+      //    | to sign up
+      //    br
+      //    | with 
+      //    b GitHub
+      //    | .
+  
+  footer
+

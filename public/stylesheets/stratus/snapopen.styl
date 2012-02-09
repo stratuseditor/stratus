@@ -1,0 +1,49 @@
+@import '../mixins'
+
+.stratus-snapopen
+  // The input for the fuzzy file pattern.
+  > input
+    width 350px
+  
+  // Results - the list of matching files.
+  > ul
+    background white
+    border 1px solid #d4d4d4
+    box-shadow inset 0px 1px 0px rgba(black, 0.25)
+    color #666
+    fancy-scroll()
+    font-family sans-serif
+    height 300px
+    list-style none
+    margin 3px
+    overflow-x hidden
+    overflow-y auto
+    text-shadow 0px 1px 0px white
+    width 350px
+    // A file.
+    > li
+      cursor pointer
+      padding 2px 8px
+      
+      &:hover
+        background #f4f4f4
+      
+      // The currently highlighted file.
+      &.current
+        background #ddd
+      
+      > h1, > h2
+        font-weight normal
+      
+      // The file name.
+      > h1
+        font-size 100%
+      
+      // The file's directory.
+      > h2
+        font-size 75%
+    
+    // The matching parts of the file name or path.
+    b
+      color #333
+      font-weight bold

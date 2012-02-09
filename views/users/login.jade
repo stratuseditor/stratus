@@ -1,0 +1,16 @@
+.sign-in.bubble.bubble-center
+  header
+    h1 Sign In
+  
+  section
+    form(action="/login", method="POST")
+      .field: input(name="login", type="text", placeholder="Username", autofocus=true)
+      .field
+        input(name="password", type="password", placeholder="Password")
+        - if (typeof(errors) != "undefined")
+          != errorMessages(errors)
+      
+      input.primary(type="submit", value="Sign in")
+      a.button(href="/register") Register
+  
+  footer

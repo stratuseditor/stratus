@@ -1,0 +1,132 @@
+@import '../mixins'
+
+tab-height = 23px
+
+// The container for the tab handles.
+.stratus-tabs
+  background linear-gradient(top, #ccc, #d8d8d8)
+  box-shadow inset 0px 1px 1px rgba(black, 0.15)
+  height tab-height
+  overflow hidden
+  padding-right 24px
+  position relative
+
+
+// A button indicating that there are additional tabs hidden from view.
+.stratus-tabs-more
+  absolute right 0px
+  background transparent
+  border none
+  border-radius 0px
+  color #666
+  font-family "WebSymbolsRegular"
+  margin 0px
+  padding 4px 6px
+  &:hover
+    background transparent
+    color #333
+  &:active
+    background rgba(black, 0.1)
+  
+  &.hide
+    visibility hidden
+
+
+// The tab handle.
+.stratus-tab
+  border-right 1px solid #c3c3c3
+  cursor default
+  display inline-block
+  float left
+  font-size 85%
+  padding 3px 10px
+  user-select none
+  
+  &:not(.current):hover > .stratus-tab-label
+    color black
+  
+  &:active
+    cursor move
+  
+  // The currently selected tab.
+  &.current
+    background linear-gradient(top, #e2e2e2, #d4d4d4)
+    border-right-color transparent
+    box-shadow 1px 1px 2px rgba(black, 0.15), -1px 1px 2px rgba(black, 0.15)
+
+
+// The text of the tab handle.
+.stratus-tab-label
+  color #222
+  font-family sans-serif
+  text-shadow 0px 1px 0px white
+
+
+// The tab handle's close button.
+.stratus-tab-close
+  background transparent
+  border none
+  border-radius 0px
+  color #777
+  font-family "WebSymbolsRegular"
+  font-size 80%
+  margin 0px
+  padding 0px
+  relative bottom 1px left 3px
+  
+  &:hover
+    background transparent
+    color #444
+  &:active
+    box-shadow none
+    color #c00
+
+
+// A container of `.stratus-tab-content`.
+.stratus-tab-contents
+  absolute top tab-height left 0px
+  bottom 0px
+  right 0px
+
+
+// The content of a tab.
+.stratus-tab-content
+  display none
+  &.current
+    display block
+
+
+// A menu of additional tabs that there is not room to display.
+.stratus-more-tabs
+  > li
+    padding-left 30px
+    position relative
+    // The check mark
+    > .stratus-more-tab-current
+      color #080
+      font-family "WebSymbolsRegular"
+      margin-left -19px
+    
+    > .stratus-more-tab-label
+      margin 0px 4px
+    
+    > .stratus-tab-close
+      absolute top 6px right 8px
+      bottom auto
+      left auto
+    
+    &:hover
+      > .stratus-more-tab-current
+        color white
+      
+      > .stratus-tab-close
+        color white
+        text-shadow none
+
+//> .stratus-tab-close
+//  margin-left 30px
+//  &:hover
+//    color #ddd
+//  &:active
+//    color #f11
+

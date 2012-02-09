@@ -1,0 +1,64 @@
+@import "../../mixins"
+
+.show-project
+  margin 20px 0px
+  
+  > .info, > .activity, > .actions
+    float left
+  
+  // Project name
+  > .info
+    width 25%
+    h1
+      color #666
+      text-align center
+      font-size 180%
+      font-weight normal
+  
+  // Recent commits
+  > .activity
+    margin-bottom 20px
+    width 50%
+    
+    ul
+      list-style none
+    
+    .commit
+      background white
+      border-bottom 1px solid #ddd
+      cursor pointer
+      padding 10px
+      
+      &:hover
+        background #fafafa
+      
+      header
+        font-weight bold
+      .when
+        color #777
+        font-size 85%
+        font-weight normal
+        float right
+        margin-left 8px
+      
+      p
+        color #444
+        font-size 90%
+  
+  > .actions
+    width 25%
+    ul
+      list-style none
+      margin-left 10px
+    li > a
+      background #eee
+      box-shadow 1px 3px 1px rgba(black, 0.3)
+      display block
+      font-size 130%
+      margin-bottom 14px
+      padding 6px 12px
+      text-shadow 0px 1px 0px white
+      &:active
+        box-shadow inset 1px 1px 3px rgba(black, 0.25)
+        relative top 3px
+

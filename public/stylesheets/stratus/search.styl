@@ -1,0 +1,81 @@
+@import "../mixins"
+
+.stratus-search
+  padding-bottom 35px
+  position relative
+  > label
+    display inline-block
+    min-width 80px
+  
+  input.stratus-search, input.stratus-replace
+    width 300px
+  
+  // The check box containers.
+  .stratus-search-regex, .stratus-search-ignorecase, .stratus-search-reverse
+    display block
+    padding 0px 3px 1px
+    > input
+      margin-top 2px
+    
+    &:hover
+      background rgba(black, 0.04)
+  
+  // Container for the search buttons:
+  // 
+  //   * Find
+  //   * Find all
+  //   * Replace
+  //   * Replace all
+  // 
+  > .buttons
+    absolute bottom 0px left 0px
+    height 30px
+    right 0px
+    
+    > button
+      border-radius 0px
+      float left
+      padding 6px 28px
+
+
+// Buttons to display a menu of the recent search terms.
+.stratus-search-history, .stratus-replace-history
+  border-radius 0px
+  font-family 'WebSymbolsRegular'
+  padding 5px 11px 4px
+  relative right 7px bottom 1px
+  &:active
+    bottom 0px
+  
+  //&.active
+
+
+// Display how many matches were made, or an error message.
+// Invisible by default, before a message is displayed.
+.stratus-search-message
+  color #333
+  font-family sans-serif
+  margin-top 6px
+  padding-right 7px
+  text-align right
+  visibility hidden
+  // The actual digit
+  > .num
+    color #111
+    font-weight bold
+  
+  // An error message
+  > .error
+    color #c00
+  
+  &.show
+    visibility visible
+
+
+//.stratus-replace
+//.stratus-search-regex
+//.stratus-search-ignorecase
+//.stratus-find
+//.stratus-find-all
+//.stratus-replace
+//.stratus-replace-all

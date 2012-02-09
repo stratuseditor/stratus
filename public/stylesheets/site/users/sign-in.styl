@@ -1,0 +1,39 @@
+@import "../../mixins"
+
+//inp-marg = 7px
+//inp-pad  = 8px
+//inp-less = 2px * inp-pad + 2px * inp-marg
+
+.sign-in, .register
+  section
+    background linear-gradient(top, #f8f8f9, #fafafb)
+    position relative
+  
+  input[type="text"], input[type="password"], input[type="email"]
+    margin 7px
+    width 370px
+  
+  input[type="submit"], .button
+    float right
+    font-size 100%
+    font-weight bold
+    margin 6px
+
+.register
+  width = 400px
+  
+  .github > h3
+    color #444
+    display inline
+    font-size 200%
+    font-weight normal
+    margin 6px
+    text-align center
+    
+    b
+      color #222
+  
+  .octocat
+    relative left (width / 2px)
+    transform translateX(-50%)
+    width 190px

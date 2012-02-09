@@ -1,0 +1,34 @@
+{ "fractus.autocomplete": "Escape"
+
+, "fractus.font.monospace.family": "Inconsolata"
+, "fractus.font.monospace.size": 15
+
+, "fractus.line-numbers": true
+, "fractus.theme": "Idlefingers"
+
+, "fractus.pairs":
+  { "(":  ")"
+  , "{":  "}"
+  , "[":  "]"
+  , "\"": "\""
+  , "'":  "'"
+  }
+, "fractus.pairs.match": true
+, "fractus.save":        "Control-s"
+, "fractus.scrollwheel": 4
+
+, "file.recent.limit": 10
+
+, "redirect": true
+
+, "search":            "Control-f"
+, "search.ignorecase": true
+, "search.regexp":     false
+
+, "snapopen":            "Control-o"
+, "snapopen.ignorecase": true
+, "snapopen.limit":      20
+
+, "ui.filetree.side":  "left"
+, "ui.filetree.width": 250
+}

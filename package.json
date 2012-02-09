@@ -1,0 +1,54 @@
+{ "name":        "stratus"
+, "version":     "0.0.1"
+, "description": "a web based programmer's text editor"
+, "keywords":   ["stratus", "editor", "ide", "tool"]
+, "homepage":    "http://stratuseditor.com/"
+, "bugs":
+  { "url":   "https://github.com/stratuseditor/stratus/issues"
+  }
+, "author":
+  { "name": "sentientwaffle"
+  , "url":  "http://sentientwaffle.github.com/"
+  }
+
+, "main": "./lib/fe/index"
+, "bin": {"stratus": "./bin/stratus.js"}
+
+, "scripts":
+  { "test":       "make test"
+  , "prepublish": "make"
+  }
+
+, "repository":
+  { "type": "git"
+  , "url":  "https://github.com/stratuseditor/stratus.git"
+  }
+
+, "dependencies":
+  { "stratus-bundle": "*"
+  , "stratus-color":  "*"
+  , "stratus-ui":     "*"
+  , "fractus":        "*"
+  , "commander":      "0.4.x"
+  , "coffee-script":  "1.1.x"
+  , "express":        "2.5.x"
+  , "connect":        "1.8.x"
+  , "stylus":         "0.21.x"
+  , "nib":            "0.3.x"
+  , "jade":           "0.20.x"
+  , "everyauth":      "0.2.x"
+  , "browserify":     "1.8.x"
+  , "underscore":     "1.2.x"
+  , "socket.io":      "0.8.x"
+  , "findit":         "0.1.x"
+  }
+
+, "devDependencies":
+  { "should":  "0.4.x"
+  , "mocha":   "0.5.x"
+  , "request": "2.9.x"
+  }
+
+, "engines": {"node": "> 0.4.x < 0.7.0"}
+, "preferGlobal": true
+}

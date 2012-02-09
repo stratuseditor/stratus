@@ -1,0 +1,8 @@
+node_modules
+
+lib
+bin/stratus.js
+client/shared/validate.js
+
+public/stylesheets/stratus-index.css
+public/stylesheets/site-index.css

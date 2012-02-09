@@ -1,0 +1,49 @@
+.new-project.bubble.bubble-center
+  header
+    h1 New Project
+  
+  .tabs.tabs-block
+    nav: ul
+      li.current Basic
+      //li Git:Clone
+      //li FTP
+      //li DropBox
+    
+    .tab-contents
+      section.current
+        form(method='POST', action='/projects', class='project-type-standard')
+          input(type="hidden", name="project[protocol]", value="fs")
+          .field!= projectFields.name
+          input(type="hidden", name="project[isPublic]", value="")
+          //.field
+          //  != projectFields.isPublic
+          //  small(style="float: right; color: #555; font-size: 70%;")
+          //    \(this doesnt actually do anything yet)
+          //.field!= projectFields.isGit
+          br
+          != projectFields.buttons
+      
+      //section
+      //  form(method='POST', action='/projects', class='project-type-git-clone')
+      //    input(type="hidden", name="project[protocol]", value="fs")
+      //    .field!= projectFields.name
+      //    .field!= projectFields.gitUrl
+      //    .field!= projectFields.isPublic
+      //    br
+      //    != projectFields.buttons
+      
+      //section
+      //  h1 No FTP support yet.
+      //form(method='POST', action='projects', class='project-type-ftp')
+      //  .field!= projectFields.name
+      //  .field.half!= projectFields.ftp.host
+      //  .field.half!= projectFields.ftp.port
+      //  .field.half!= projectFields.ftp.username
+      //  .field.half!= projectFields.ftp.password
+      //  br
+      //  != projectFields.buttons
+      
+      //section
+      //  h1 No DropBox support yet.
+  
+  footer

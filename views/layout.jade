@@ -1,0 +1,39 @@
+!!! 5
+html
+  head
+    title= title
+    
+    // Support
+    link(rel='stylesheet', href='/images/iconic/font/iconic.css', type='text/css')
+    link(rel="shortcut icon", href="/images/favicon.png")
+    
+    link(rel="stylesheet", href="/stylesheets/site-index.css")
+    
+    // Support files.
+    script(type="text/javascript", src="/javascripts/support/underscore-min.js")
+    script(type="text/javascript", src="/javascripts/support/jquery-1.7.min.js")
+    script(type="text/javascript", src="/javascripts/support/jquery-ui-1.8.16.min.js")
+    
+    // Some data
+    script(type="text/javascript")!= jsData(data)
+    
+    // The browserify bundle.
+    script(type="text/javascript", src="/browserify.js")
+  body
+    header
+      .container
+        .info
+          a(href="http://stratuseditor.com/manual") Help
+          .col
+          - if (everyauth.loggedIn)
+            a(href="/logout") Log Out
+          - else
+            a(href="/login") Log In
+            .col
+            a(href="/register"): b Register
+        
+        h1.logo: a(href="/") Stratus
+        
+    != messages
+    .container
+      != body

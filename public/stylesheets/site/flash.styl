@@ -1,0 +1,19 @@
+@import '../mixins'
+
+.flash
+  border-style solid
+  border-width 0px 0px 1px
+  box-shadow 0px 1px 1px rgba(black, 0.15)
+  color #222
+  cursor pointer
+  margin 0px auto
+  padding 6px
+  text-align center
+
+.flash.error
+  background linear-gradient(top, rgba(red, 0.05), rgba(red, 0.08))
+  border-color rgba(red, 0.15)
+
+.flash.success
+  background linear-gradient(top, rgba(green, 0.05), rgba(green, 0.08))
+  border-color rgba(green, 0.15)

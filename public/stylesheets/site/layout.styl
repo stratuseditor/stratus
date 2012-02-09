@@ -1,0 +1,48 @@
+@import "../mixins"
+grid-width = 1100px
+
+@font-face
+  font-family 'Inconsolata'
+  font-style normal
+  font-weight normal
+  src local('Inconsolata'), url('/fonts/Inconsolata.ttf') format('woff')
+
+
+body
+  background white
+  color black
+  sans-serif()
+
+.container
+  margin 0px auto
+  max-width grid-width
+
+// Page header.
+body > header
+  background linear-gradient(top, #e5e5e5, #f2f2f2)
+  box-shadow inset 0px -1px 5px rgba(black, 0.09)
+  padding 2px 0px
+  text-shadow 0px 1px 0px white
+  width 100%
+  
+  h1 a
+    color darken(#52595D, 15%)
+    //geometric()
+    font-family 'Inconsolata', monospace
+    user-select none
+    &:hover
+      color dblue
+      text-decoration none
+  
+  .info
+    float right
+    margin 8px
+    
+    .col
+      border-left 1px solid #ccc
+      border-right 1px solid white
+      display inline
+      width 0px
+      margin 0px 8px
+
+
