@@ -11,9 +11,9 @@ util    = require 'util'
 findit  = require 'findit'
 Repo    = require './base_repo'
 
-FS_BASE = path.resolve process.env.HOME, ".stratus",
-  (process.env.NODE_ENV || "development"),
-  "projects"
+STRATUS = path.resolve process.env.HOME, ".stratus"
+FS_BASE = path.resolve STRATUS, (process.env.NODE_ENV || "development"), "projects"
+fs.mkdirSync STRATUS, 0755 unless path.existsSync STRATUS
 fs.mkdirSync FS_BASE, 0755 unless path.existsSync FS_BASE
 
 # Create a new project on the file system.
