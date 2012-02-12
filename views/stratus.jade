@@ -24,9 +24,7 @@ html
     // The browserify bundle.
     script(type="text/javascript", src="/stratus-browserify.js")
     script
-      require.modules["stratus"]    = require.modules["/stratus/index.coffee"]
-      require.modules["fractus"]    = require.modules["/fractus/index.js"]
-      require.modules["stratus-ui"] = require.modules["/stratus-ui/index.js"]
+      require.modules["stratus"] = require.modules["/stratus/index.coffee"]
     script(type="text/javascript", src="/plugins.js")
   body
     nav.toolbar: ul
