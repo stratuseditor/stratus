@@ -1,5 +1,5 @@
 { "name":        "stratus"
-, "version":     "0.0.2"
+, "version":     "0.0.3"
 , "description": "a web based programmer's text editor"
 , "keywords":   ["stratus", "editor", "ide", "tool"]
 , "homepage":    "http://stratuseditor.com/"
