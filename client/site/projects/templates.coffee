@@ -19,13 +19,6 @@ exports.newProjectDialog = "<div class='tabs tabs-block'>
           </label>
         </div>
         
-        <div class='field'>
-          <label>
-            <input name='project[isGit]' type='checkbox' checked='checked'/>
-            Git
-          </label>
-        </div>
-        
         <br/>
         
         <input type='submit' value='Create Project' class='primary'>

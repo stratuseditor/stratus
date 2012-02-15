@@ -13,7 +13,6 @@ ProjectFactory = factory Project, (callback) ->
       user_id:  u.id
       protocol: "fs"
       isPublic: true
-      isGit:    false
 
 
 module.exports = {UserFactory, ProjectFactory}

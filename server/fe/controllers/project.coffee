@@ -6,7 +6,7 @@ module.exports = (app) ->
   # CREATE project
   # 
   # project - The hash of attributes for a project, such as the name,
-  #           isPublic, isGit, ect.
+  #           isPublic, ect.
   # 
   app.post "/projects", (req, res) ->
     {user} = req
@@ -17,7 +17,6 @@ module.exports = (app) ->
     
     projectAttrs          = req.param "project"
     projectAttrs.user_id  = user.id
-    projectAttrs.isGit    = !!projectAttrs.isGit
     projectAttrs.isPublic = !!projectAttrs.isPublic
     
     project               = new Project projectAttrs
@@ -89,6 +88,7 @@ module.exports = (app) ->
                     files: rootFiles
                     open:  {}
                     lsR:   allFiles
+                    git:   0
                   config: conf
                   bundles: bundles.sort()
           , true

@@ -15,7 +15,6 @@ describe "FsRepo", ->
         FsRepo.create
           name:  "how-to-evade-zombies"
           owner: "ted"
-          isGit: false
         , (_repo) ->
           repo = _repo
           done()

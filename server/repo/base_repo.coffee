@@ -9,8 +9,6 @@ class BaseRepo
       @path
     # Either "fs", ...
       @protocol
-    # Whether or not they are using Git.
-      @isGit
     } = options
   
   # #### OVERRIDE THESE ####

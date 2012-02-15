@@ -5,7 +5,6 @@ Create, modify, delete projects. A project has a pointer to a directory.
 ### Create a brand new project.
 
     require("project")
-      .fs.create({name, owner, isGit}) # Not implemented.
       .fs.create({name, owner, path})
       .fs.create({name, owner, clone}) # Not implemented.
 

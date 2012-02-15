@@ -24,8 +24,6 @@ fs.mkdirSync FS_BASE, 0755 unless path.existsSync FS_BASE
 #           "owner" - The name of the user who is creating the project.
 #           
 #           And one of the following optional properties:
-#           "isGit" - Whether or not the project should initialize a git repo
-#                     (optional).
 #           "path"  - The path to the directory on the file system that
 #                   should become a project (optional).
 #           "clone" - A git clone URL. The new project will be a clone of
@@ -44,7 +42,6 @@ fs.mkdirSync FS_BASE, 0755 unless path.existsSync FS_BASE
 #   createFsRepo
 #     name:  "how-to-evade-zombies"
 #     owner: someUser
-#     isGit: true
 #   , (fsRepo) ->
 #     # ...
 # 
@@ -58,26 +55,21 @@ fs.mkdirSync FS_BASE, 0755 unless path.existsSync FS_BASE
 # No return.
 createFsRepo = (options, callback) ->
   # Create an empty project with a Git repo.
-  if options.isGit
-    throw new Error "Not implemented."
-    
   # Use an existing directory on the file system for the project.
-  else if options.path
+  if options.path
     return callback new FsRepo {
       name:     options.name
       path:     options.path
       protocol: "fs"
-      isGit:    false
     }
     
   # Create an empty project without a Git repo.
-  else if options.isGit == false
+  else if !options.clone
     projectPath = allocate options.owner, options.name
     return callback new FsRepo {
       name:     options.name
       path:     projectPath
       protocol: "fs"
-      isGit:    false
     }
     
   # Clone the project from someplace.

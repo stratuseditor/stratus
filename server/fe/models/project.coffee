@@ -16,7 +16,6 @@ validate = require '../../../client/shared/validate'
 #           "path"     - The path on the file system.
 #           "protocol" - "fs", "dropbox" ...
 #           "isPublic" - Whether or not the project is publicly acccessable.
-#           "isGit":   - Whether or not the project uses Git.
 # 
 # Examples
 # 
@@ -28,7 +27,7 @@ module.exports = class Project extends Model
   
   constructor: (options = {}) ->
     super options
-    { @id, @name, @user_id, @path, @protocol, @isPublic, @isGit } = options
+    { @id, @name, @user_id, @path, @protocol, @isPublic } = options
     
   preSave: (callback) ->
     User.find @user_id, (user) =>
@@ -38,7 +37,6 @@ module.exports = class Project extends Model
         path:     @path
         protocol: @protocol
         isPublic: @isPublic
-        isGit:    @isGit
       , (_repo) =>
         {@path} = _repo
         callback()
@@ -48,7 +46,7 @@ module.exports = class Project extends Model
   # 
   # Returns a hash of attributes.
   attributes: ->
-    return { @id, @name, @user_id, @path, @protocol, @isPublic, @isGit }
+    return { @id, @name, @user_id, @path, @protocol, @isPublic }
   
   # Validations:
   # * name
@@ -97,7 +95,7 @@ module.exports = class Project extends Model
   # Public: Get an instance of Repo for the project.
   repo: ->
     if @protocol == "fs"
-      return new repo.fs {@name, @path, @protocol, @isGit}
+      return new repo.fs {@name, @path, @protocol}
     else
       throw new Error "Unsupported Project protocol: '#{@protocol}'"
   

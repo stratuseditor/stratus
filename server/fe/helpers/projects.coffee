@@ -23,10 +23,6 @@ module.exports =
       name:    "project[isPublic]"
       checked: "checked")
     
-    isGit: checkbox("Git",
-      name:    "project[isGit]"
-      checked: "checked")
-    
     gitUrl: input
       name:         "project[gitUrl]"
       placeholder:  "Git URL"
