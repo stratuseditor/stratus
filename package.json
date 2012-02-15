@@ -29,6 +29,7 @@
   , "stratus-color":  "*"
   , "stratus-ui":     "*"
   , "fractus":        "*"
+  , "gift":           "*"
   , "commander":      "0.4.x"
   , "coffee-script":  "1.1.x"
   , "express":        "2.5.x"
