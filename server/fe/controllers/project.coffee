@@ -45,18 +45,6 @@ module.exports = (app) ->
       return res.json query
   
   
-  # TODO
-  #app.get "/:username/:project/download", (req, res, next) ->
-  #  username    = req.param "username"
-  #  projectName = req.param "project"
-  #  Project.lookup "#{username}/#{projectName}", (project) ->
-  #    return next() unless project
-  #    
-  #    project.repo().download (tarPath) ->
-  #      res.download tarPath
-  #      fs.unlink tarPath
-  
-  
   # HTML:
   #   Open the editor to the given project.
   app.get "/:username/:project", (req, res, next) ->
