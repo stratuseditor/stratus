@@ -95,7 +95,7 @@ module.exports = class Project extends Model
   # Public: Get an instance of Repo for the project.
   repo: ->
     if @protocol == "fs"
-      return new repo.fs {@name, @path, @protocol}
+      return @_repo ||= new repo.fs {@name, @path, @protocol}
     else
       throw new Error "Unsupported Project protocol: '#{@protocol}'"
   
