@@ -175,9 +175,10 @@ module.exports = class FsRepo extends Repo
   
   
   isGit: (callback) ->
-    fs.readdir @path, (err, dirs) ->
+    return callback null, @_isGit if @_isGit?
+    fs.readdir @path, (err, dirs) =>
       return callback err if err
-      return callback null, !!~dirs.indexOf(".git")
+      return callback null, (@_isGit = !!~dirs.indexOf(".git"))
   
   # Helpers
   

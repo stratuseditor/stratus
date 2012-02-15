@@ -66,18 +66,19 @@ module.exports = (app) ->
       project.list "./", (err, rootFiles) ->
         project.config (err, conf) ->
           project.repo().listR "./", (allFiles) ->
-            bundle.list (err, bundles) ->
-              res.render "stratus",
-                layout:  false
-                title:   "#{username}/#{projectName} - Stratus"
-                data:
-                  project:
-                    path:  "#{username}/#{projectName}"
-                    files: rootFiles
-                    open:  {}
-                    lsR:   allFiles
-                    git:   0
-                  config: conf
-                  bundles: bundles.sort()
+            project.repo().isGit (err, isGit) ->
+              bundle.list (err, bundles) ->
+                res.render "stratus",
+                  layout:  false
+                  title:   "#{username}/#{projectName} - Stratus"
+                  data:
+                    project:
+                      path:  "#{username}/#{projectName}"
+                      files: rootFiles
+                      open:  {}
+                      lsR:   allFiles
+                      isGit: isGit
+                    config: conf
+                    bundles: bundles.sort()
           , true
   
