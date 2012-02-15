@@ -174,6 +174,11 @@ module.exports = class FsRepo extends Repo
     fs.writeFile fullPath, data, callback
   
   
+  isGit: (callback) ->
+    fs.readdir @path, (err, dirs) ->
+      return callback err if err
+      return callback null, !!~dirs.indexOf(".git")
+  
   # Helpers
   
   # Change the `filepath` the be relative to the project root, and remove

@@ -274,6 +274,39 @@ describe "FsRepo", ->
       data.toString().should.eql "Hello world"
   
   
+  describe "#isGit", ->
+    describe "a git repo", ->
+      repo = null
+      before (done) ->
+        FsRepo.create
+          name:  "a-git-repo"
+          owner: "ted"
+        , (r) ->
+          r.mkdir ".git", (err) ->
+            repo = r
+            done err
+      
+      it "is true", (done) ->
+        repo.isGit (err, isGit) ->
+          isGit.should.be.true
+          done err
+    
+    describe "a non-git repo", ->
+      repo = null
+      before (done) ->
+        FsRepo.create
+          name:  "not-a-git-repo"
+          owner: "ted"
+        , (r) ->
+          repo = r
+          done()
+      
+      it "is false", (done) ->
+        repo.isGit (err, isGit) ->
+          isGit.should.be.false
+          done err
+  
+  
   describe "FsRepo#_clean", ->
     it "resolves ./", ->
       proj._clean("./x/y.z").should.not.match /[.]\//
