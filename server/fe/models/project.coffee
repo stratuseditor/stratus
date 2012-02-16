@@ -28,7 +28,7 @@ module.exports = class Project extends Model
   constructor: (options = {}) ->
     super options
     { @id, @name, @user_id, @path, @protocol, @isPublic } = options
-    
+  
   preSave: (callback) ->
     User.find @user_id, (user) =>
       repo.fs.create
