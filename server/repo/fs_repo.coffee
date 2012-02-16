@@ -10,6 +10,7 @@ util    = require 'util'
 {exec}  = require 'child_process'
 findit  = require 'findit'
 Repo    = require './base_repo'
+git     = require 'gift'
 
 STRATUS = path.resolve process.env.HOME, ".stratus"
 FS_BASE = path.resolve STRATUS, (process.env.NODE_ENV || "development"), "projects"
@@ -179,6 +180,9 @@ module.exports = class FsRepo extends Repo
     fs.readdir @path, (err, dirs) =>
       return callback err if err
       return callback null, (@_isGit = !!~dirs.indexOf(".git"))
+  
+  git: ->
+    @_git ||= git @path
   
   # Helpers
   
