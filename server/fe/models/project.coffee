@@ -150,6 +150,13 @@ module.exports = class Project extends Model
           return callback err if err
           return callback null, _.extend(baseConfig, userConfig, projConfig)
   
+  gitData: (callback) ->
+    @repo.isGit (err, isGit) ->
+      return callback null, false if !isGit
+      gitRepo = @repo().git
+      gitRepo.branch (err, head) ->
+        return callback null, {branch: head.name}
+  
   # Internal: Get only the configuration for the project.
   _config: (callback) ->
     confPath = "#{@path}/.stratus.json"
