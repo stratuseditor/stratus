@@ -151,9 +151,9 @@ module.exports = class Project extends Model
           return callback null, _.extend(baseConfig, userConfig, projConfig)
   
   gitData: (callback) ->
-    @repo.isGit (err, isGit) ->
+    @repo().isGit (err, isGit) =>
       return callback null, false if !isGit
-      gitRepo = @repo().git
+      gitRepo = @repo().git()
       gitRepo.branch (err, head) ->
         return callback null, {branch: head.name}
   

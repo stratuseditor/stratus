@@ -66,7 +66,7 @@ module.exports = (app) ->
       project.list "./", (err, rootFiles) ->
         project.config (err, conf) ->
           project.repo().listR "./", (allFiles) ->
-            project.repo().isGit (err, isGit) ->
+            project.gitData (err, gitData) ->
               bundle.list (err, bundles) ->
                 res.render "stratus",
                   layout:  false
@@ -77,7 +77,7 @@ module.exports = (app) ->
                       files: rootFiles
                       open:  {}
                       lsR:   allFiles
-                      isGit: isGit
+                      git:   gitData
                     config: conf
                     bundles: bundles.sort()
           , true
