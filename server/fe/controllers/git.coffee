@@ -54,10 +54,20 @@ module.exports = (app) ->
   app.get "/:username/:project/commit", (req, res, next) ->
     setup req, res, next, (stop, project, gitRepo) ->
       return if stop
-      sha = req.param "sha"
       
       gitRepo.diff "", "", (err, diffs) ->
         gitRepo.status (err, status) ->
           _.map (d) -> d.toJSON()
           json = {status: status.files, diffs}
           res.json json
+  
+  # Commit code.
+  app.post "/:username/:project/commit", (req, res, next) ->
+    setup req, res, next, (stop, project, gitRepo) ->
+      return if stop
+      {files, amend, message} = req.param "commit"
+      console.log {files, amend, message}
+      gitRepo.add files, (err) ->
+        return res.json {err} if err
+        gitRepo.commit message, {amend: !!amend}, (err) ->
+          res.json {err}
