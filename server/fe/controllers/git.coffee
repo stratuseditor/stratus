@@ -55,7 +55,7 @@ module.exports = (app) ->
     setup req, res, next, (stop, project, gitRepo) ->
       return if stop
       
-      gitRepo.diff "", "", (err, diffs) ->
+      gitRepo.diff "HEAD", "", (err, diffs) ->
         gitRepo.status (err, status) ->
           _.map (d) -> d.toJSON()
           json = {status: status.files, diffs}
