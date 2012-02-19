@@ -66,7 +66,6 @@ module.exports = (app) ->
     setup req, res, next, (stop, project, gitRepo) ->
       return if stop
       {files, amend, message} = req.param "commit"
-      console.log {files, amend, message}
       gitRepo.add files, (err) ->
         return res.json {err} if err
         gitRepo.commit message, {amend: !!amend}, (err) ->
