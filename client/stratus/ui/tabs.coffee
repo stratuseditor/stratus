@@ -118,13 +118,17 @@ module.exports = createTab = (label, content, $container=null) ->
   $contents.append $content
   
   selectTab $tab
+  createTab.tabs[cId] = $tab
   return $tab
 
 
-# Internal: Close the tab associated with the given handle.
+# Public: Tab handles accessable by their cID.
+createTab.tabs = {}
+
+# Public: Close the tab associated with the given handle.
 # 
 # Returns false.
-closeTab = ($handle) ->
+module.exports.close = closeTab = ($handle) ->
   contentId = $handle.data "content"
   if $handle.hasClass "current"
     while true
