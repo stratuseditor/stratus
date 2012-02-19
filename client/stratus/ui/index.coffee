@@ -8,7 +8,7 @@ tabs         = require './tabs'
 
 require './split'
 
-module.exports = {toolbar, file_manager, snapopen, search}
+module.exports = {toolbar, file_manager, snapopen, search, tabs}
 
 
 jQuery ($) ->
