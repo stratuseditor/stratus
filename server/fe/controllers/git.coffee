@@ -70,3 +70,31 @@ module.exports = (app) ->
         return res.json {err} if err
         gitRepo.commit message, {amend: !!amend}, (err) ->
           res.json {err}
+  
+  # List the branches.
+  app.get "/:username/:project/branches.json", (req, res, next) ->
+    setup req, res, next, (stop, project, gitRepo) ->
+      return if stop
+      gitRepo.branches (err, heads) ->
+        gitRepo.remotes (err, remotes) ->
+          return res.send {err} if err
+          gitRepo.branch (err, current) ->
+            return res.send {err} if err
+            branches = {}
+            for head in heads
+              delete head.repo
+              head.published      = false
+              branches[head.name] = head
+              if head.name == current.name
+                head.current = true
+                break
+            for remote in remotes
+              continue if remote.name == "origin/HEAD"
+              delete remote.repo
+              remote.name = name = remote.name.replace /^origin\//, ""
+              if !branches[name]
+                remote.ref     = "origin/#{remote.name}"
+                branches[name] = remote
+              branches[name].published = true
+            
+            res.json _.values(branches)
