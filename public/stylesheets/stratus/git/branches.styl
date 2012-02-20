@@ -1,0 +1,164 @@
+@import '../../mixins'
+
+branch-radius = 6px
+branch-actions-width = 24px
+
+// The branch container.
+.stratus-git-branches
+  background #dbdbdb
+  font-family sans-serif
+  height 100%
+  overflow auto
+  position relative
+  text-shadow 0px 1px 0px white
+  width 100%
+  
+  > header
+    absolute top 0px left 0px
+    background #999
+    border-bottom 1px solid #888
+    box-shadow 0px 1px 6px rgba(black, 0.4)
+    height 55px
+    right 0px
+    z-index 10
+  
+  // A text input to filter the branches by.
+  .stratus-git-branches-filter
+    absolute top 0px left 50px
+    border 1px solid #888
+    border-radius branch-radius
+    margin 10px 0px
+    padding 6px
+    right 150px
+    &:focus
+      border-color #666
+  
+  > ul li
+    height 44px
+    margin 10px 0px
+    relative top 54px
+    &.current
+      margin-bottom 30px
+    
+    > .check
+      absolute top 50% left 8px
+      color #494
+      font-size 45px
+      transform translateY(-50%)
+      user-select none
+    > .sync
+      absolute top 50%
+      cursor pointer
+      right 114px
+      transform translateY(-50%) rotate(36deg)
+      width 24px
+      &.disabled
+        cursor default
+        opacity 0.2
+      &.wait
+        transform translateY(-50%) rotate(9999deg)
+        transition all 60s linear
+    > .published, > .publish
+      absolute top 50% right 10px
+      border 1px solid #bbb
+      transform translateY(-50%)
+    > .published
+      background #bbb
+      box-shadow inset 0px 1px 1px rgba(black, 0.4)
+      cursor default
+    > .publish
+      padding-left 22px
+      padding-right 22px
+  
+
+// A branch.
+.stratus-git-branch
+  absolute top 0px left 50px
+  background linear-gradient(top, #f9f9f9, #cfcfcf)
+  border 1px solid #bbb
+  border-radius branch-radius
+  bottom 0px
+  box-shadow 0px 0px 5px rgba(black, 0.2)
+  right 150px
+  
+  > header
+    absolute top 0px bottom 0px
+    border-right 1px solid #ccc
+    display inline-block
+    width 112px
+  > section
+    absolute top 0px left 113px
+    border-left 1px solid #f4f4f4
+    bottom 0px
+    display inline-block
+    padding 5px 0px 5px 5px
+    right branch-actions-width
+  
+  // The branch names.
+  .name
+    absolute top 5px left 12px
+    color #222
+    font-size 15px
+    font-weight bold
+    overflow hidden
+    right 0px
+    text-overflow ellipsis
+  // The SHA of the branch head.
+  .stratus-git-sha
+    absolute bottom 5px left 12px
+    color #555
+    font-size 12px
+    font-weight normal
+  
+  .author, .message, time
+    display inline-block
+    relative bottom 3px left 2px
+  // The user's avatar image.
+  .avatar
+    border-radius 3px
+    display inline-block
+    height 24px
+    relative top 4px
+    width 24px
+  // The name of the commit's author.
+  .author
+    color #444
+    font-size 13px
+    font-weight bold
+  // A shortened commit description.
+  .message
+    color #444
+    cursor pointer
+    font-size 13px
+    &:hover
+      text-decoration underline
+  // The most recent change to the branch.
+  time
+    absolute top 50% right 10px
+    bottom auto
+    color #999
+    left auto
+    font-size 11px
+    transform translateY(-50%)
+  
+  // Buttons
+  .actions
+    absolute top 0px right 0px
+    bottom 0px
+    width branch-actions-width
+    > button
+      background #ccc
+      border none
+      border-radius 0px
+      box-shadow inset 3px 0px 1px -1px rgba(black, 0.1)
+      height 50%
+      padding 0px
+      width 100%
+      &:active
+        background #bbb
+      &:first-child
+        border-bottom 1px solid #aaa
+        border-radius top right branch-radius - 1px
+      &:last-child
+        border-radius bottom right branch-radius - 1px
+        font-size 10px

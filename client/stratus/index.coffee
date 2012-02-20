@@ -6,6 +6,7 @@ module.exports = window.stratus =
   fractus:  require('./fractus')
   fs:       require('./fs')
   open:     require('./open')
+  git:      require('./git')
   
   on:    (a, b) -> config.on(a, b)
   emit:  (a, b) -> config.emit(a, b)

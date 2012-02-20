@@ -98,3 +98,12 @@ module.exports = (app) ->
               branches[name].published = true
             
             res.json _.values(branches)
+  
+  # Push a branch.
+  # params:
+  # * branch
+  app.post "/:username/:project/publish", (req, res, next) ->
+    setup req, res, next, (stop, project, gitRepo) ->
+      return if stop
+      gitRepo.git "push", {}, ["origin", req.param("branch")], (err) ->
+        res.json {err}

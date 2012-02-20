@@ -1,0 +1,111 @@
+@import '../../mixins'
+
+// A list of recent commits.
+.stratus-git-history
+  background #f4f4f4
+  font-family sans-serif
+  height 100%
+  overflow auto
+  position relative
+  text-shadow 0px 1px 0px white
+  width 100%
+  
+  // The date for the list of commits that follows.
+  > time
+    color #666
+    display block
+    font-size 13px
+    margin-left 20px
+    padding 20px 0px 10px
+    text-shadow 0px 1px 0px white
+  
+  > footer
+    padding 16px
+    position relative
+    > nav
+      absolute top 14px left 50%
+      height 40px
+      transform translateX(-50%)
+    
+    button
+      border 1px solid #aaa
+      &.disabled
+        opacity 0.6
+        &:active
+          box-shadow none
+
+
+// A group of recent commits (grouped by date).
+.stratus-git-log
+  box-shadow 0px 8px 1px -7px rgba(black, 0.1)
+  color #222
+  list-style none
+  margin 0px 20px
+  > li
+    background linear-gradient(top, #fcfcfc, #e4e4e4)
+    border 1px solid #ccc
+    border-top-color white
+    cursor pointer
+    padding 10px
+    position relative
+    > header, > p
+      user-select none
+    
+    // The commit author.
+    > header
+      font-size 16px
+      font-weight bold
+    
+    // The commit summary.
+    > p
+      color #444
+      font-size 13px
+    
+    // The commit author's avatar.
+    > img
+      border-radius 4px
+      float left
+      height 32px
+      margin-right 10px
+      width 32px
+    
+    // Timestamp, SHA, and a view code button.
+    > aside
+      absolute top 5px right 5px
+      color #888
+      font-size 12px
+      text-align center
+      width 130px
+      // The timestamp and SHA.
+      > p
+        absolute top 6px left 0px
+        max-width 80px
+    
+    &:first-child
+      border-radius top 8px
+      border-top 1px solid #ccc
+    &:last-child
+      border-radius bottom 8px
+
+
+// An arrow button to expand the commit.
+.stratus-git-log-show
+  color #aaa
+  float right
+  font-size 32px
+  padding 0px
+  relative top 3px right 10px
+  text-shadow 0px -1px 1px rgba(black, 0.5), 0px 1px 1px white
+  &, &:hover, &:active
+    background none
+    border none
+    box-shadow none
+    text-decoration none
+  &:hover
+    color #888
+  &:active
+    color #666
+
+// A commit SHA hash.
+.stratus-git-sha
+  font-family monospace
