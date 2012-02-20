@@ -28,7 +28,7 @@ jQuery ($) ->
     ProjectSlider.open()
     return false
   
-  validate.form $newProject.find(".project-type-standard"),
+  validate.form $newProject.find(".project-type-standard, .project-type-git"),
     "[name='project\\[name\\]']": ($el, callback) ->
       name   = $el.val()
       errors = validateProject({name}).name || []
