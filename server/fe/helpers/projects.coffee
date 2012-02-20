@@ -24,8 +24,8 @@ module.exports =
       checked: "checked")
     
     gitUrl: input
-      name:         "project[gitUrl]"
-      placeholder:  "Git URL"
+      name:         "project[clone]"
+      placeholder:  "Clone URL"
     
     
     ftp:

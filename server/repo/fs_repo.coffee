@@ -64,8 +64,19 @@ createFsRepo = (options, callback) ->
       protocol: "fs"
     }
     
+  # Clone the project from someplace.
+  else if options.clone
+    projectPath = allocate options.owner, options.name, false
+    exec "git clone #{options.clone} #{projectPath}", (err) ->
+      console.error err if err
+      return callback new FsRepo {
+        name:     options.name
+        path:     projectPath
+        protocol: "fs"
+      }
+    
   # Create an empty project without a Git repo.
-  else if !options.clone
+  else
     projectPath = allocate options.owner, options.name
     return callback new FsRepo {
       name:     options.name
@@ -73,17 +84,14 @@ createFsRepo = (options, callback) ->
       protocol: "fs"
     }
     
-  # Clone the project from someplace.
-  else if options.clone
-    throw new Error "Not implemented."
 
 
 # Generate a path for the project.
-allocate = (owner, projectName) ->
+allocate = (owner, projectName, create=true) ->
   userDir    = path.resolve "#{ FS_BASE }/#{ owner }"
   projectDir = path.resolve userDir, projectName
   fs.mkdirSync userDir, 0755 unless path.existsSync userDir
-  fs.mkdirSync projectDir, 0755
+  fs.mkdirSync projectDir, 0755 if create
   return projectDir
 
 

@@ -5,7 +5,7 @@
   .tabs.tabs-block
     nav: ul
       li.current Basic
-      //li Git:Clone
+      li Git:Clone
       //li FTP
       //li DropBox
     
@@ -14,6 +14,15 @@
         form(method='POST', action='/projects', class='project-type-standard')
           input(type="hidden", name="project[protocol]", value="fs")
           .field!= projectFields.name
+          input(type="hidden", name="project[isPublic]", value="")
+          br
+          != projectFields.buttons
+      
+      section
+        form(method='POST', action='/projects', class='project-type-git')
+          input(type="hidden", name="project[protocol]", value="fs")
+          .field!= projectFields.name
+          .field!= projectFields.gitUrl
           input(type="hidden", name="project[isPublic]", value="")
           br
           != projectFields.buttons
